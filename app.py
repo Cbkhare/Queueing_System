@@ -18,3 +18,9 @@ def authenticate():
         return flask.make_response(flask.jsonify({'status':'success'}), 200)
     else:
         return flask.make_response(flask.jsonify({'error': 'success'}), 500)
+
+
+
+'''
+THIS FILE NEEDS MORE WORK
+'''
