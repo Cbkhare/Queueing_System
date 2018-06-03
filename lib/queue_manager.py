@@ -14,6 +14,10 @@ class QueueManager(object):
         self.stack = []
 
     def en_que(self):
+        '''
+        This method instantiates the Worker Manager and steps to execute Worker
+        :return:
+        '''
         try:
             self.sub_list = self.subscriber_list()
             worker = WorkerManager(self.topic, self.data, self.sub_list)
@@ -22,6 +26,10 @@ class QueueManager(object):
             raise
 
     def subscriber_list(self):
+        '''
+        This method fetches all the subscribers according to the topic
+        :return:
+        '''
         #list = self.conn.query({'topic':{'$exists':True}})
         list = self.conn.query({'topic' : self.topic})
         sub_list = []

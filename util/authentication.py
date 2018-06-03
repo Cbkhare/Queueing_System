@@ -22,7 +22,10 @@ class Authentication(object):
 
     def create_user(self, extra_data=None):
         '''
-        :param extra_data: Can be dependency here with URL path to consume
+        :param extra_data:
+            Can be dependency here with URL path to consume
+            dependency: list of dependees
+            execution_path: URL or path to the consumers
         :return:
         '''
         try:

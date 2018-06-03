@@ -16,6 +16,11 @@ class WorkerManager(object):
 
 
     def start(self):
+        '''
+        This method instantiates worker threads for each consumer according to
+        the priority decided in resolve
+        :return:
+        '''
         try:
             self.resolve()
             done = False
@@ -38,6 +43,12 @@ class WorkerManager(object):
             raise exp
 
     def start_worker_thread(self, data, execution_path):
+        '''
+        This method is the worker thread. This executes the task.
+        :param data: Message (string)
+        :param execution_path: (path/URL to the consumer)
+        :return:
+        '''
         try:
             self.lock.acquire()
             self.thread_count +=1
@@ -57,6 +68,11 @@ class WorkerManager(object):
 
 
     def resolve(self):
+        '''
+        This method resolves the dependency issues by sorting the consumers priority.
+        The dependee with highest priority will be executed first
+        :return:
+        '''
         self.consumers = {d['username']:d for d in self.sub_list}
         #print(self.sub_list)
         for d in self.sub_list:

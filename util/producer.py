@@ -14,7 +14,10 @@ class Producer(object):
                                          data=self.data)
 
     def produce(self):
-        # prepare data
+        '''
+        This method publishes the data
+        :return:
+        '''
         try:
             task_length = self.rpipe.llen('task_list').execute()[0]
             if task_length == self.que_len:
